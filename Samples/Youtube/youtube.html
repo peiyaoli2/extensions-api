@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Filtering Sample</title>
+    <title>Datasources Sample</title>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -16,75 +15,19 @@
 
     <!-- Extensions Library (this will be hosted on a CDN eventually) -->
     <script src="../../lib/tableau.extensions.1.latest.js"></script>
+    <script src='https://www.youtube.com/iframe_api' async></script>
 
     <!-- Our extension's code -->
     <script src="./youtube.js"></script>
   </head>
   <body>
-    <div class='container'>
-      <div id='player'></div>
+    <div class="container">
+      <!-- Youtube extension -->
+      <div id="player"> </div>
 
       <input id = 'watchId' type="text" name="fname" style = 'width: 50%; display: inline'>
       <div id = 'submitWatchIdButton' style = 'border:1px solid black; width: 100px; display: inline;'>Input Youtube Video URL </div>
-
-      <div id='player2'></div>
+      
     </div>
-
-    <script>
-      // 2. This code loads the IFrame Player API code asynchronously.
-      var submitWatchIdButton = document.getElementById('submitWatchIdButton');
-      // submitWatchIdButton.innerHTML = 'testing';
-      submitWatchIdButton.addEventListener("click", newPlay);
-
-
-
-      var tag = document.createElement('script');
-
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          height: '390',
-          width: '640',
-          videoId: 'M7lc1UVf-VE',
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-      }
-
-
-      function newPlay() {
-        const watchId = document.getElementById('watchId').value.split('=')[1];
-        // var submitWatchIdButton = document.getElementById('submitWatchIdButton');
-        // submitWatchIdButton.innerHTML = watchId;
-        player.loadVideoById(watchId)
-      }
-
-      // 4. The API will call this function when the video player is ready.
-      function onPlayerReady(event) {
-        event.target.playVideo();
-      }
-
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
-      var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
-          done = true;
-        }
-      }
-      function stopVideo() {
-        player.stopVideo();
-      }
-    </script>
   </body>
 </html>
