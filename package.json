@@ -13,7 +13,7 @@
   "author": "tableau",
   "license": "MIT",
   "dependencies": {
-    "http-server": "^0.9.0"
+    "http-server": "^0.11.1"
   },
   "devDependencies": {
     "semistandard": "^11.0.0"
