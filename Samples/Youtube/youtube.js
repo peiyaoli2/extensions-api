@@ -51,7 +51,7 @@
  
   function newYTPlayer () {
     var containerId = 'player';
-    var videoId = 'GKSRyLdjsPA';
+    var videoId = 'fdc9pd5QyeA';
     playerClass.playVideo(containerId, videoId);
   }
 
